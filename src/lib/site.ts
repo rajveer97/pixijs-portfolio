@@ -6,9 +6,9 @@ export const SITE = {
   alternativeTitle: 'Game Developer • TypeScript Engineer • Interactive Web Developer',
   tagline:
     'Building high-performance interactive experiences, browser games and scalable game systems with TypeScript, PixiJS and WebGL.',
-  email: 'hello@rajveerpandey.dev',
-  github: 'https://github.com/',
-  linkedin: 'https://www.linkedin.com/',
+  email: 'ramkumarpandey243@gmail.com',
+  github: 'https://github.com/rajveer97',
+  linkedin: 'https://www.linkedin.com/in/rajveerpandey/',
   canonicalUrl: 'https://rajveerpandey.dev/',
   resumePath: '/resume.pdf',
   introFlagKey: 'rp_intro_seen_v1',
