@@ -87,38 +87,11 @@ function ReelScene({ accent, secondary }: { accent: string; secondary: string })
 
 function TechTubeScene() {
   return (
-    <svg viewBox="0 0 360 170" className="h-full w-full" role="img" aria-hidden="true">
-      <defs>
-        <linearGradient id="ttBg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#121218" />
-          <stop offset="1" stopColor="#0a0a0c" />
-        </linearGradient>
-      </defs>
-      <rect width="360" height="170" fill="url(#ttBg)" />
-      <circle cx="180" cy="72" r="34" fill="#8b5cf6" opacity="0.12" />
-      <rect x="152" y="52" width="56" height="40" rx="10" fill="#ff0000" opacity="0.9" />
-      <polygon points="172,62 172,82 188,72" fill="#ffffff" />
-      <g>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
-          const h = 8 + ((i * 13) % 26)
-          return (
-            <rect
-              key={i}
-              x={60 + i * 30}
-              y={128 - h}
-              width="8"
-              height={h}
-              rx="2"
-              fill="#8b5cf6"
-              fillOpacity={i % 2 === 0 ? 0.95 : 0.5}
-            />
-          )
-        })}
-      </g>
-      {[0, 1, 2].map((i) => (
-        <rect key={i} x={230} y={48 + i * 26} width="90" height="10" rx="5" fill="#ffffff" opacity="0.18" />
-      ))}
-    </svg>
+    <img
+      src={`${import.meta.env.BASE_URL}techtube_icon.png`}
+      alt="TechTube"
+      className="h-full w-full object-cover"
+    />
   )
 }
 
