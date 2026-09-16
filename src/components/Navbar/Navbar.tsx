@@ -47,7 +47,7 @@ export function Navbar() {
           className="font-display text-base font-bold tracking-[0.18em] text-foreground"
           onClick={() => setOpen(false)}
         >
-          RAJVEER
+RAM PANDEY
         </a>
 
         <div className="hidden items-center gap-8 md:flex">

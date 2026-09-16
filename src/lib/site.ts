@@ -1,6 +1,6 @@
 export const SITE = {
-  name: 'Rajveer Pandey',
-  firstName: 'Rajveer',
+  name: 'Ram Pandey',
+  firstName: 'Ram',
   lastName: 'Pandey',
   title: 'PixiJS Game Developer',
   alternativeTitle: 'Game Developer • TypeScript Engineer • Interactive Web Developer',
@@ -10,6 +10,6 @@ export const SITE = {
   github: 'https://github.com/rajveer97',
   linkedin: 'https://www.linkedin.com/in/rajveerpandey/',
   canonicalUrl: 'https://rajveerpandey.dev/',
-  resumePath: '/resume.pdf',
+  resumePath: `${import.meta.env.BASE_URL}Resume.pdf`,
   introFlagKey: 'rp_intro_seen_v1',
 } as const

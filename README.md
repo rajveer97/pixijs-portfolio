@@ -1,4 +1,4 @@
-# Rajveer Pandey — PixiJS Game Developer Portfolio
+# Ram Pandey — PixiJS Game Developer Portfolio
 
 A premium, high-performance interactive portfolio for a PixiJS Game Developer — built with React, TypeScript, Vite, Tailwind CSS, Framer Motion and PixiJS. The hero runs a real-time PixiJS/WebGL scene, the intro is a game-style loading screen, and a hidden Konami-code slot machine is tucked in as an easter egg.
 
@@ -79,7 +79,7 @@ All site-wide configuration lives in **`src/lib/site.ts`** — replace the place
 | `github`       | `https://github.com/`                               |
 | `linkedin`     | `https://www.linkedin.com/`                         |
 | `canonicalUrl` | `https://rajveerpandey.dev/`                        |
-| `resumePath`   | `/resume.pdf` — drop your resume at `public/resume.pdf` |
+| `resumePath`   | `/Resume.pdf` — drop your resume at `public/Resume.pdf` |
 
 Section content (projects, skills, experience, case studies) lives in the matching files under `src/data/`.
 

@@ -15,7 +15,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
           <div>
             <p className="font-display text-xl font-bold tracking-[0.15em] text-foreground">
-              RAJVEER
+              RAM
             </p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
               PixiJS Game Developer — building high-performance browser games, slot frameworks and
@@ -69,7 +69,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-start justify-between gap-4 border-t border-line pt-8 sm:flex-row sm:items-center">
-          <p className="font-mono text-xs text-faint">© 2026 Rajveer Pandey</p>
+          <p className="font-mono text-xs text-faint">© 2026 Ram Pandey</p>
           <a
             href="#top"
             className="group inline-flex items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-foreground"

@@ -82,7 +82,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       aria-label="Loading portfolio"
     >
       <div className="flex items-center justify-between">
-        <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted">Rajveer Pandey</span>
+        <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted">Ram Pandey</span>
         <button
           type="button"
           onClick={skip}
@@ -102,7 +102,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
         >
           {welcome ? (
             <h1 className="font-display text-2xl font-bold tracking-tight sm:text-4xl">
-              <span className="text-gradient">WELCOME, RAJVEER.</span>
+              <span className="text-gradient">WELCOME, RAM.</span>
             </h1>
           ) : (
             <span className="font-mono text-sm text-faint">Initializing experience…</span>
