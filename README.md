@@ -51,6 +51,7 @@ npm run preview
 
 ```
 ├── .github/workflows/deploy.yml   # GitHub Pages CI/CD (build + deploy on push to main)
+├── .github/workflows/release.yml  # GitHub Release from a v* tag, notes from CHANGELOG.md
 ├── public/                        # static assets (favicon, robots.txt, sitemap.xml, og-image)
 ├── src/
 │   ├── components/
@@ -66,7 +67,8 @@ npm run preview
 │   ├── hooks/                     # useKonami, usePrefersReducedMotion
 │   ├── lib/                       # site config + utils
 │   └── styles/                    # Tailwind v4 theme tokens + custom utilities
-└── index.html                     # SEO meta, fonts, JSON-LD
+├── index.html                     # SEO meta, fonts, JSON-LD
+└── CHANGELOG.md                   # version history (Keep a Changelog)
 ```
 
 ## Customizing the Content
@@ -91,6 +93,27 @@ Deploying is automatic via GitHub Actions (`.github/workflows/deploy.yml`):
 2. Push to `main` — the workflow installs deps, runs the production build, and deploys `dist/` to Pages.
 
 The site is served from the `/pixijs-portfolio/` subpath, matching the `base` configured in `vite.config.ts`.
+
+## Versioning and Releases
+
+Changes are tracked in [`CHANGELOG.md`](./CHANGELOG.md) using the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format, and versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+To cut a release:
+
+1. Move the changes under `## [Unreleased]` in `CHANGELOG.md` into a new `## [x.y.z] - YYYY-MM-DD` section.
+2. Bump `version` in `package.json` to `x.y.z`.
+3. Commit and push those two files to `main`.
+4. Tag and push the tag. The release workflow publishes the GitHub Release using the matching CHANGELOG section as the release notes:
+
+   ```bash
+   git add CHANGELOG.md package.json
+   git commit -m "Release v1.1.0"
+   git push origin main
+   git tag -a v1.1.0 -m "v1.1.0"
+   git push origin v1.1.0
+   ```
+
+`.github/workflows/release.yml` fails the run if the tag does not match the `package.json` version or the CHANGELOG has no section for it, so those two files must be committed before tagging.
 
 ## License
 
