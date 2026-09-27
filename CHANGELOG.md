@@ -7,6 +7,16 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- `favicon-32.png`, `favicon-192.png` and `apple-touch-icon.png` generated from the new brand mark; the touch icon keeps a solid background because iOS composites transparency on black
+
+### Changed
+
+- `og:image` regenerated at 1200x630 with the site palette, the Space Grotesk headline and the new logo mark, and `og:image:alt` / `twitter:image:alt` rewritten to match
+- Swapped the icon link from `favicon.svg` to the new PNGs, since browsers prefer an SVG favicon and would otherwise keep ignoring them
+- Replaced `public/Resume.pdf` with the current version
+
 ## [2.0.0] - 2026-09-27
 
 ### Added
