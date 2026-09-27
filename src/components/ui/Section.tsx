@@ -12,7 +12,15 @@ interface SectionProps {
   className?: string
 }
 
-export function Section({ id, index, label, title, description, children, className }: SectionProps) {
+export function Section({
+  id,
+  index,
+  label,
+  title,
+  description,
+  children,
+  className,
+}: SectionProps) {
   return (
     <section id={id} className={cn('relative scroll-mt-24 py-20 sm:py-28', className)}>
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
@@ -28,7 +36,9 @@ export function Section({ id, index, label, title, description, children, classN
             {title}
           </h2>
           {description ? (
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">{description}</p>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+              {description}
+            </p>
           ) : null}
         </Reveal>
         <div className="mt-10 sm:mt-14">{children}</div>

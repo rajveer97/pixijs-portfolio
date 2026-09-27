@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { SITE } from '../../lib/site'
 
 interface LoadingScreenProps {
   onComplete: () => void
@@ -14,10 +15,10 @@ const TOTAL_MS = 2800
 const LOG_STEPS: Array<{ at: number; line: string; done?: boolean }> = [
   { at: 80, line: 'Initializing renderer…' },
   { at: 650, line: 'WebGL context ready', done: true },
-  { at: 850, line: 'Initializing game engine…' },
-  { at: 1450, line: 'Engine online', done: true },
-  { at: 1650, line: 'Initializing portfolio…' },
-  { at: 2250, line: 'Portfolio online', done: true },
+  { at: 850, line: 'Loading game systems…' },
+  { at: 1450, line: 'Systems online', done: true },
+  { at: 1650, line: 'Mapping the stack…' },
+  { at: 2250, line: 'Stack online', done: true },
 ]
 
 export function LoadingScreen({ onComplete }: LoadingScreenProps) {
@@ -82,7 +83,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       aria-label="Loading portfolio"
     >
       <div className="flex items-center justify-between">
-        <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted">Ram Pandey</span>
+        <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted">{SITE.name}</span>
         <button
           type="button"
           onClick={skip}
@@ -98,18 +99,17 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
           animate={{ opacity: welcome ? 1 : 0, y: welcome ? 0 : 12 }}
           transition={{ duration: 0.35 }}
           className="mb-6"
-          aria-hidden={!welcome}
         >
           {welcome ? (
-            <h1 className="font-display text-2xl font-bold tracking-tight sm:text-4xl">
-              <span className="text-gradient">WELCOME, RAM.</span>
-            </h1>
+            <p className="font-display text-2xl font-bold tracking-tight sm:text-4xl">
+              <span className="text-gradient">WELCOME, {SITE.firstName.toUpperCase()}.</span>
+            </p>
           ) : (
             <span className="font-mono text-sm text-faint">Initializing experience…</span>
           )}
         </motion.div>
 
-        <div className="font-mono text-xs leading-7 sm:text-sm">
+        <div className="font-mono text-xs leading-7 sm:text-sm" aria-live="polite">
           {logs.map((log, i) => (
             <motion.div
               key={i}
@@ -118,14 +118,26 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
               transition={{ duration: 0.25 }}
               className="flex items-center gap-3 text-muted"
             >
-              <span className="text-accent">›</span>
+              <span aria-hidden="true" className="text-accent">
+                ›
+              </span>
               <span>{log.text}</span>
-              {log.done ? <span className="text-cyan">✓</span> : null}
+              {log.done ? (
+                <span aria-hidden="true" className="text-cyan">
+                  ✓
+                </span>
+              ) : null}
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-8" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}>
+        <div
+          className="mt-8"
+          role="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={progress}
+        >
           <div className="flex items-center justify-between font-mono text-[11px] text-faint">
             <span>LOADING EXPERIENCE</span>
             <span>{progress}%</span>
@@ -141,8 +153,8 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       </div>
 
       <div className="flex items-center justify-between font-mono text-[11px] text-faint">
-        <span>v1.0.0 — game.dev</span>
-        <span>pixi + ts + webgl</span>
+        <span>v{__APP_VERSION__} — game / graphics</span>
+        <span>pixi · ts · webgl · api · ai</span>
       </div>
     </motion.div>
   )

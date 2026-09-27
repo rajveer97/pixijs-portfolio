@@ -4,8 +4,10 @@ export interface TimelineEntry {
   role: string
   company: string
   location?: string
+  domain: string
   summary: string
-  details: string[]
+  focus: string[]
+  technologies: string[]
   current?: boolean
 }
 
@@ -16,14 +18,16 @@ export const timeline: TimelineEntry[] = [
     role: 'PixiJS Developer',
     company: 'Gamemano Pvt Ltd',
     location: 'Noida, India',
+    domain: 'Game & Graphics Engineering',
     summary:
-      'Building browser-based games on PixiJS with TypeScript and WebGL — focusing on interactive graphics, game architecture, mechanics and performance.',
-    details: [
-      'Browser-based game development on PixiJS',
-      'Interactive graphics and game mechanics',
-      'Game architecture and reusable systems',
-      'Performance optimization for runtime graphics',
+      'Building browser-based games with PixiJS, TypeScript and WebGL — real-time graphics, game architecture and runtime performance.',
+    focus: [
+      'Real-time browser game development on PixiJS',
+      'Interactive graphics and game systems',
+      'Reusable game architecture',
+      'Runtime performance work',
     ],
+    technologies: ['PixiJS', 'TypeScript', 'WebGL', 'JavaScript'],
     current: true,
   },
   {
@@ -31,26 +35,30 @@ export const timeline: TimelineEntry[] = [
     period: '2023 – 2026',
     role: 'Developer / Associate Developer / Trainee Developer',
     company: 'Merkur Gaming India',
+    domain: 'Slot Game Engineering',
     summary:
-      'Professional slot game development journey covering game logic, animations, UI, reel mechanics and performance across PixiJS and Phaser.',
-    details: [
+      'Professional slot game development across PixiJS and Phaser — game logic, animation, UI and reel mechanics.',
+    focus: [
       'Slot game development with PixiJS and Phaser',
-      'Game logic, animations and UI systems',
+      'Game logic, animation and UI systems',
       'Reel mechanics and game state handling',
       'Grew from Trainee Developer to Developer',
     ],
+    technologies: ['PixiJS', 'Phaser', 'TypeScript', 'WebGL'],
   },
   {
     id: 'start',
     period: '2022',
     role: 'Started professional development journey',
     company: 'Software Development',
+    domain: 'Software Engineering Foundations',
     summary:
-      'Began a professional development journey that grew into a specialization in TypeScript, browser games and interactive engineering.',
-    details: [
+      'The start of a professional engineering journey that grew into a specialization in TypeScript, browser games and interactive systems.',
+    focus: [
       'First professional steps in software engineering',
       'Deep focus on TypeScript, PixiJS and WebGL',
-      'Specialized in game and interactive development',
+      'Foundations in interactive and game development',
     ],
+    technologies: ['TypeScript', 'JavaScript', 'PixiJS'],
   },
 ]

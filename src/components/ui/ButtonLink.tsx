@@ -5,10 +5,8 @@ type ButtonVariant = 'primary' | 'secondary' | 'ghost'
 type ButtonSize = 'md' | 'lg' | 'sm'
 
 const variants: Record<ButtonVariant, string> = {
-  primary:
-    'bg-foreground text-bg hover:bg-white hover:shadow-[0_0_32px_rgba(139,92,246,0.35)]',
-  secondary:
-    'border border-line-strong text-foreground hover:border-accent hover:text-white',
+  primary: 'bg-foreground text-bg hover:bg-white hover:shadow-[0_0_32px_rgba(139,92,246,0.35)]',
+  secondary: 'border border-line-strong text-foreground hover:border-accent hover:text-white',
   ghost: 'text-muted hover:text-foreground',
 }
 

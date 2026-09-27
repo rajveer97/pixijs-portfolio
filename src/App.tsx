@@ -1,21 +1,61 @@
-import { useCallback, useState } from 'react'
+import { Suspense, lazy, useCallback, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { LoadingScreen } from './components/Loading/LoadingScreen'
 import { Navbar } from './components/Navbar/Navbar'
 import { Hero } from './components/Hero/Hero'
-import { About } from './components/About/About'
-import { Projects } from './components/Projects/Projects'
-import { Skills } from './components/Skills/Skills'
-import { Experience } from './components/Experience/Experience'
-import { CaseStudies } from './components/CaseStudies/CaseStudies'
-import { Services } from './components/Services/Services'
-import { ResumeCTA } from './components/ResumeCTA/ResumeCTA'
-import { Contact } from './components/Contact/Contact'
+import { FromGraphicsToSystems } from './components/Evolution/FromGraphicsToSystems'
 import { Footer } from './components/Footer/Footer'
 import { EasterEgg } from './components/EasterEgg/EasterEgg'
 import { ScrollProgress } from './components/ui/ScrollProgress'
 import { useKonamiCode } from './hooks/useKonami'
 import { SITE } from './lib/site'
+
+const EngineeringDomains = lazy(() =>
+  import('./components/Domains/EngineeringDomains').then((module) => ({
+    default: module.EngineeringDomains,
+  })),
+)
+const Projects = lazy(() =>
+  import('./components/Projects/Projects').then((module) => ({ default: module.Projects })),
+)
+const EngineeringStack = lazy(() =>
+  import('./components/Stack/EngineeringStack').then((module) => ({
+    default: module.EngineeringStack,
+  })),
+)
+const CaseStudies = lazy(() =>
+  import('./components/CaseStudies/CaseStudies').then((module) => ({
+    default: module.CaseStudies,
+  })),
+)
+const AIEngineering = lazy(() =>
+  import('./components/AIEngineering/AIEngineering').then((module) => ({
+    default: module.AIEngineering,
+  })),
+)
+const CareerEvolution = lazy(() =>
+  import('./components/CareerEvolution/CareerEvolution').then((module) => ({
+    default: module.CareerEvolution,
+  })),
+)
+const Experience = lazy(() =>
+  import('./components/Experience/Experience').then((module) => ({ default: module.Experience })),
+)
+const Principles = lazy(() =>
+  import('./components/Principles/Principles').then((module) => ({
+    default: module.Principles,
+  })),
+)
+const ResumeCTA = lazy(() =>
+  import('./components/ResumeCTA/ResumeCTA').then((module) => ({ default: module.ResumeCTA })),
+)
+const Contact = lazy(() =>
+  import('./components/Contact/Contact').then((module) => ({ default: module.Contact })),
+)
+
+function SectionFallback({ id }: { id: string }) {
+  return <div id={id} className="min-h-[70vh] w-full scroll-mt-24" aria-hidden="true" />
+}
 
 function shouldShowIntro(): boolean {
   try {
@@ -62,14 +102,37 @@ function App() {
 
       <main id="main">
         <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Experience />
-        <CaseStudies />
-        <Services />
-        <ResumeCTA />
-        <Contact />
+        <FromGraphicsToSystems />
+        <Suspense fallback={<SectionFallback id="domains" />}>
+          <EngineeringDomains />
+        </Suspense>
+        <Suspense fallback={<SectionFallback id="work" />}>
+          <Projects />
+        </Suspense>
+        <Suspense fallback={<SectionFallback id="stack" />}>
+          <EngineeringStack />
+        </Suspense>
+        <Suspense fallback={<SectionFallback id="engineering" />}>
+          <CaseStudies />
+        </Suspense>
+        <Suspense fallback={<SectionFallback id="ai" />}>
+          <AIEngineering />
+        </Suspense>
+        <Suspense fallback={<SectionFallback id="career" />}>
+          <CareerEvolution />
+        </Suspense>
+        <Suspense fallback={<SectionFallback id="experience" />}>
+          <Experience />
+        </Suspense>
+        <Suspense fallback={<SectionFallback id="principles" />}>
+          <Principles />
+        </Suspense>
+        <Suspense fallback={<SectionFallback id="resume" />}>
+          <ResumeCTA />
+        </Suspense>
+        <Suspense fallback={<SectionFallback id="contact" />}>
+          <Contact />
+        </Suspense>
       </main>
 
       <Footer />

@@ -3,64 +3,125 @@ export interface CaseStudy {
   index: string
   title: string
   subtitle: string
+  domain: string
   problem: string
   approach: string
   nodes: string[]
-  nodesNote?: string
+  nodesNote: string
+  decisions: string[]
+  result: string
   tags: string[]
 }
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: 'reel-engine',
+    id: 'reusable-architecture',
     index: '01',
-    title: 'Reel Engine',
-    subtitle: 'A reusable core for slot gameplay',
+    title: 'Reusable PixiJS Architecture',
+    subtitle: 'A game engine layer instead of repeated game code',
+    domain: 'Game Engineering',
     problem:
-      'Managing multiple reels, symbols, animations and game states in one reusable architecture that different games can share without rewriting the core.',
+      'Browser games at production scale need more than scenes. Every new title started by re-solving loading, layout, reel logic, animation and state — the same problems, repeatedly, in slightly different shapes.',
     approach:
-      'Split the system into a layered hierarchy where each layer owns one responsibility — the Game composes the whole scene, the Reel Manager owns all reels, each Reel owns its symbols, and the Animation Controller keeps every transition independent and cancelable.',
-    nodes: ['Game', 'Reel Manager', 'Reel', 'Symbol', 'Animation Controller'],
-    nodesNote: 'Ownership flows downward; state and events flow upward.',
-    tags: ['Architecture', 'Reels', 'State'],
+      'I designed a reusable system layer underneath the game layer: assets, scenes, responsive layout, animation, state and a narrow public API. Games describe behaviour; the engine layer owns the plumbing.',
+    nodes: ['Game Code', 'Public API', 'Systems Layer', 'PixiJS Renderer'],
+    nodesNote: 'Game code depends on the public API — never on renderer internals.',
+    decisions: [
+      'Feature-based modules instead of deep class hierarchies',
+      'A narrow public API so games cannot reach into engine internals',
+      'Centralized asset, layout and animation management rather than per-scene setup',
+      'Event-driven communication over shared mutable global state',
+    ],
+    result:
+      'New games and features build on the same system layer instead of duplicating infrastructure, so the codebase stays maintainable as it grows. Production code stays private — these diagrams describe structure, not source.',
+    tags: ['PixiJS', 'TypeScript', 'Game Architecture', 'Reusable Systems'],
   },
   {
-    id: 'asset-loading',
+    id: 'rendering-performance',
     index: '02',
-    title: 'Asset Loading',
-    subtitle: 'Predictable, observable loading',
+    title: 'Rendering & Performance Optimization',
+    subtitle: 'Treating the frame budget as a design constraint',
+    domain: 'Game Engineering',
     problem:
-      'Games load dozens of textures, spritesheets, sounds and fonts — unmanaged loading leads to blank screens, broken progress and memory pressure.',
+      'Animation-heavy browser games stutter when asset and runtime cost grow: too many draw calls, unmanaged textures and effects competing for the same frame budget with no measurement behind them.',
     approach:
-      'Centralize loading through a pipeline that batches requests, reports progress, caches resources by key and unloads textures that are no longer in use.',
-    nodes: ['Boot Screen', 'Manifest', 'Loader', 'Resource Cache', 'Game Systems'],
-    nodesNote: 'Every asset is requested once, tracked, and released when unused.',
-    tags: ['Assets', 'Performance', 'UX'],
+      'I profile first, then manage rendering as an explicit budget: object pooling, texture atlasing, batched sprites, delta-time-driven animation and no per-frame allocation in hot paths.',
+    nodes: ['Profile & Measure', 'Pool & Batch', 'Texture Strategy', 'Stable Frame Budget'],
+    nodesNote: 'Optimize from measurement, not from assumption.',
+    decisions: [
+      'Profile before optimizing — no speculative rewrites',
+      'Object pooling for objects created every frame',
+      'Texture atlasing to cut draw calls',
+      'Animation driven by delta time rather than assumed frame counts',
+    ],
+    result:
+      'Frame behavior became predictable under load and heavy animation scenes stopped competing for the same budget. Exact production frame timings stay internal and are not published here.',
+    tags: ['WebGL', 'PixiJS', 'Profiling', 'Performance'],
   },
   {
-    id: 'responsive-layout',
+    id: 'backend-apis',
     index: '03',
-    title: 'Responsive Game Layout',
-    subtitle: 'One layout, every screen size',
+    title: 'Backend API & Data Modeling',
+    subtitle: 'Clear contracts between client, service and data',
+    domain: 'Backend Engineering',
     problem:
-      'A slot game must look right from a 320px mobile screen to a desktop monitor — naive scaling breaks aspect ratio, hit areas and readability.',
+      'Interactive products need a backend that stays clear as features grow. When endpoints, validation and data shapes are decided ad hoc, a working prototype becomes expensive to extend.',
     approach:
-      'Compute a unified scale from a virtual design resolution, anchor containers to safe areas, and re-measure on resize and orientation change so the scene scales without distortion.',
-    nodes: ['Viewport', 'Layout Manager', 'Scaler', 'Containers', 'Symbols & UI'],
-    nodesNote: 'Design resolution is fixed; runtime resolution adapts.',
-    tags: ['Responsive', 'PixiJS', 'Mobile'],
+      'I designed resource-oriented REST endpoints, kept validation and error handling consistent across the surface, and modelled data around how the product is actually queried rather than mirroring the UI.',
+    nodes: ['Client', 'REST API', 'Validation Layer', 'Database'],
+    nodesNote: 'One consistent contract between client, API and data layer.',
+    decisions: [
+      'Resource-oriented REST design with predictable status codes',
+      'Validation at the boundary instead of scattered inside handlers',
+      'Data models shaped by real access patterns',
+      'Environment-based configuration kept out of the repository',
+    ],
+    result:
+      'A backend I can reason about: new endpoints follow the same patterns and client features build against stable contracts. This is my expanding area, and where I am deliberately moving next.',
+    tags: ['Node.js', 'Express', 'REST', 'MongoDB', 'Go (expanding)'],
   },
   {
-    id: 'animation-architecture',
+    id: 'ai-workflow',
     index: '04',
-    title: 'Animation Architecture',
-    subtitle: 'Cancelable, composable animation',
+    title: 'AI-Assisted Development Workflow',
+    subtitle: 'An accelerator inside a human-owned engineering loop',
+    domain: 'AI-Assisted Engineering',
     problem:
-      'Win animations, symbol reveals and UI transitions overlap constantly — competing tweens cause jumps, races and frame drops.',
+      'Building a system is more than writing code. Exploring approaches, writing tests, debugging and documenting all compete for the same limited time.',
     approach:
-      'Route every visual change through a small animation system with priorities, lifetimes and cleanup, so any animation can be interrupted cleanly without leaving the scene in a broken state.',
-    nodes: ['Animation Controller', 'Animations', 'Transitions', 'Timeline', 'Scene'],
-    nodesNote: 'Every animation is cancelable and owned by the controller.',
-    tags: ['Animation', 'Systems', 'PixiJS'],
+      'I treat AI as part of the engineering loop: architecture is decided by me first, then AI accelerates exploration, scaffolding, test generation, debugging and second-opinion review.',
+    nodes: ['Human Architecture', 'AI-Assisted Build', 'Tests & Verification', 'Human Review'],
+    nodesNote: 'AI accelerates the loop — it never owns the decision.',
+    decisions: [
+      'Architecture and design decided before any AI assistance',
+      'AI output reviewed like any other code I write',
+      'Tests verify real behavior instead of generated expectations',
+      'Prompting treated as an engineering skill, not a shortcut',
+    ],
+    result:
+      'Faster exploration and broader test coverage per unit of time, with unchanged accountability for what ships. The workflow is documented here in full rather than claimed as a metric.',
+    tags: ['AI Tools', 'Testing', 'Code Review', 'Prompting'],
+  },
+  {
+    id: 'full-stack',
+    index: '05',
+    title: 'Full-Stack Idea to Deployment',
+    subtitle: 'Taking a product from concept to a live service',
+    domain: 'Full-Stack Engineering',
+    problem:
+      'An idea only matters when it can reach users. Shipping end-to-end means the interface, the backend, the data and the deployment have to work together rather than separately.',
+    approach:
+      'I took TechTube from concept to a live product — interface, backend services, data model, build pipeline and deployment — iterating against what the real product demanded instead of assumptions.',
+    nodes: ['Frontend Experience', 'Backend Services', 'Data Layer', 'Build & Deploy'],
+    nodesNote: 'Idea to live product: interface, services, data and deployment.',
+    decisions: [
+      'Ship a working slice end-to-end before widening scope',
+      'Keep the data model aligned with real product usage',
+      'Automated build and deploy so releases stay repeatable',
+      'Iterate on live feedback rather than assumptions',
+    ],
+    result:
+      'A live product at techtube.co.in, built end-to-end from the frontend interface through backend services and deployment.',
+    tags: ['React', 'Node.js', 'MongoDB', 'CI/CD', 'Deployment'],
   },
 ]

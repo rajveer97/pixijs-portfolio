@@ -22,7 +22,9 @@ export function ArchitectureDiagram({ nodes, note }: ArchitectureDiagramProps) {
           ) : null}
         </Fragment>
       ))}
-      {note ? <p className="mt-4 text-center font-mono text-[10px] leading-relaxed text-faint">{note}</p> : null}
+      {note ? (
+        <p className="mt-4 text-center font-mono text-[10px] leading-relaxed text-faint">{note}</p>
+      ) : null}
     </div>
   )
 }

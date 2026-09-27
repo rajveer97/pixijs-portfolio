@@ -1,63 +1,83 @@
-export interface SkillGroup {
+export type StackAccent = 'accent' | 'cyan' | 'blue' | 'muted'
+
+export interface StackLayer {
   id: string
   title: string
+  status: string
   blurb: string
   skills: string[]
-  accent: string
+  accent: StackAccent
 }
 
-export const skillGroups: SkillGroup[] = [
+export const stackLayers: StackLayer[] = [
   {
-    id: 'game-development',
-    title: 'Game Development',
-    blurb: 'The core of what I build every day.',
+    id: 'core',
+    title: 'Core',
+    status: 'Primary expertise',
+    blurb: 'The graphics and game engineering I build with every day.',
     skills: [
       'PixiJS',
-      'Phaser',
       'TypeScript',
       'JavaScript',
       'WebGL',
-      'Canvas',
+      'Canvas Rendering',
       'Game Architecture',
       'Animation Systems',
-      'Slot Game Development',
+      'Slot Game Systems',
     ],
-    accent: 'text-accent',
-  },
-  {
-    id: 'frontend',
-    title: 'Frontend',
-    blurb: 'Interfaces and interactive layers.',
-    skills: ['React', 'Tailwind CSS', 'Three.js', 'HTML', 'CSS'],
-    accent: 'text-cyan',
+    accent: 'accent',
   },
   {
     id: 'backend',
     title: 'Backend',
-    blurb: 'APIs and services behind the scenes.',
-    skills: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs'],
-    accent: 'text-blue',
+    status: 'Expanding',
+    blurb: 'APIs and data models behind interactive products.',
+    skills: ['Node.js', 'Express.js', 'REST APIs', 'MongoDB', 'API Design'],
+    accent: 'cyan',
   },
   {
-    id: 'tools',
-    title: 'Tools',
-    blurb: 'The workflow I ship with.',
-    skills: ['Git', 'Azure DevOps', 'Jenkins', 'SonarQube', 'Postman', 'SVN'],
-    accent: 'text-muted',
+    id: 'engineering',
+    title: 'Engineering',
+    status: 'Working toolkit',
+    blurb: 'The tools I use to ship, review and maintain code.',
+    skills: [
+      'React',
+      'Tailwind CSS',
+      'Vite',
+      'HTML5',
+      'CSS3',
+      'Git',
+      'Azure DevOps',
+      'Jenkins',
+      'Postman',
+      'SonarQube',
+      'SVN',
+    ],
+    accent: 'blue',
+  },
+  {
+    id: 'exploring',
+    title: 'Exploring',
+    status: 'Current learning',
+    blurb: 'Where I am deliberately growing next.',
+    skills: [
+      'Go',
+      'Distributed Systems',
+      'PostgreSQL',
+      'Docker',
+      'Cloud Platforms',
+      'AI-Assisted Development',
+    ],
+    accent: 'muted',
   },
 ]
 
-export const marqueeTech = [
+export const heroCapabilities = [
   'PIXIJS',
   'TYPESCRIPT',
   'WEBGL',
-  'PHASER',
-  'GAME ARCHITECTURE',
-  'SLOT GAMES',
-  'REEL SYSTEMS',
-  'ANIMATION SYSTEMS',
+  'GO',
   'REACT',
-  'NODE.JS',
-  'PERFORMANCE',
-  'INTERACTIVE WEB',
+  'MONGODB',
+  'AI-ASSISTED DEVELOPMENT',
 ]

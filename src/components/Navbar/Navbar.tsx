@@ -4,10 +4,10 @@ import { SITE } from '../../lib/site'
 import { cn } from '../../lib/utils'
 
 const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'Work', href: '#work' },
+  { label: 'Engineering', href: '#engineering' },
   { label: 'Experience', href: '#experience' },
+  { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -47,7 +47,7 @@ export function Navbar() {
           className="font-display text-base font-bold tracking-[0.18em] text-foreground"
           onClick={() => setOpen(false)}
         >
-RAM PANDEY
+          {SITE.displayName}
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -70,7 +70,7 @@ RAM PANDEY
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-foreground md:hidden"
+          className="flex items-center gap-2.5 rounded-full border border-line px-3.5 py-2.5 text-foreground transition-colors hover:border-line-strong md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -96,6 +96,7 @@ RAM PANDEY
               )}
             />
           </span>
+          <span className="font-mono text-xs uppercase tracking-widest">Menu</span>
         </button>
       </nav>
 
