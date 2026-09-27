@@ -7,6 +7,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-09-27
+
 ### Added
 
 - `favicon-32.png`, `favicon-192.png` and `apple-touch-icon.png` generated from the new brand mark; the touch icon keeps a solid background because iOS composites transparency on black
@@ -16,6 +18,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `og:image` regenerated at 1200x630 with the site palette, the Space Grotesk headline and the new logo mark, and `og:image:alt` / `twitter:image:alt` rewritten to match
 - Swapped the icon link from `favicon.svg` to the new PNGs, since browsers prefer an SVG favicon and would otherwise keep ignoring them
 - Replaced `public/Resume.pdf` with the current version
+
+### Removed
+
+- The superseded `public/favicon.svg` and the 518 KB `public/favicon2.png` copy of the brand image
 
 ## [2.0.0] - 2026-09-27
 
@@ -82,6 +88,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Added the TechTube project card with a dedicated icon image and updated case-study details
 - Served the app from the `/pixijs-portfolio/` subpath to match the GitHub Pages project URL
 
-[Unreleased]: https://github.com/rajveer97/pixijs-portfolio/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/rajveer97/pixijs-portfolio/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/rajveer97/pixijs-portfolio/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/rajveer97/pixijs-portfolio/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/rajveer97/pixijs-portfolio/releases/tag/v1.0.0
